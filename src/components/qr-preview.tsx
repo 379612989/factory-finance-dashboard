@@ -10,7 +10,13 @@ export function QrPreview() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      setUrl(window.location.origin || process.env.NEXT_PUBLIC_APP_URL || "");
+      const query = new URLSearchParams(window.location.search);
+      const isEdgeOneProtectedUrl = query.has("eo_token") && query.has("eo_time");
+      setUrl(
+        isEdgeOneProtectedUrl
+          ? window.location.href
+          : window.location.origin || process.env.NEXT_PUBLIC_APP_URL || "",
+      );
     }, 0);
 
     return () => window.clearTimeout(timer);
