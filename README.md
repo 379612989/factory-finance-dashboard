@@ -161,6 +161,36 @@ npm run build
 
 如果 GitHub 在国内访问不稳定，可以把同一份代码同步到 Gitee，再在 EdgeOne Pages 中选择 Gitee 仓库导入。构建命令和环境变量保持一致。
 
+## 无自有域名公开预览：GitHub Pages
+
+如果只是让外部用户预览看板功能，又暂时没有自己的域名，可以使用 GitHub Pages。它会发布一个静态演示版，访问地址类似：
+
+```text
+https://379612989.github.io/factory-finance-dashboard/
+```
+
+说明：
+
+- 不需要购买域名。
+- 不需要 Vercel 手机验证。
+- 使用内置演示数据。
+- 适合给客户看 UI、图表和移动端效果。
+- 静态版不连接 Supabase 服务端，不适合正式录入生产数据。
+
+本项目已内置 GitHub Actions 工作流：`.github/workflows/github-pages.yml`。推送到 `main` 后会自动构建并发布。
+
+本地验证静态版：
+
+```bash
+npm run build:github-pages
+```
+
+首次启用时，在 GitHub 仓库进入：
+
+```text
+Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
+```
+
 ## Vercel 部署，可选
 
 1. 将项目推送到 GitHub、GitLab 或 Bitbucket。

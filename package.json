@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
+    "build:github-pages": "GITHUB_PAGES=true NEXT_PUBLIC_STATIC_EXPORT=true next build --webpack",
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx scripts/seed.ts"

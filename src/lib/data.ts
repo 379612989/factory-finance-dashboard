@@ -4,8 +4,14 @@ import { BusinessData, Customer, Expense, Product, SalesOrder } from "./types";
 import { createSupabaseServerClient } from "./supabase/client";
 
 const orderByCreated = { ascending: true };
+const isStaticExport =
+  process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" || process.env.GITHUB_PAGES === "true";
 
 export async function getBusinessData(): Promise<BusinessData> {
+  if (isStaticExport) {
+    return demoData;
+  }
+
   noStore();
   const supabase = createSupabaseServerClient();
 
