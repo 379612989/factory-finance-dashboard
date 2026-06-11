@@ -22,6 +22,8 @@
 
 # misc
 .DS_Store
+README 2.md
+src/app/page 2.tsx
 *.pem
 
 # debug
