@@ -11,7 +11,7 @@
 - Recharts 图表
 - Supabase PostgreSQL
 - qrcode.react 二维码
-- Vercel 部署
+- 腾讯 EdgeOne Pages / Vercel 部署
 
 ## 本地启动
 
@@ -131,7 +131,37 @@ seed 数据包括：
 
 导出字段均为中文表头。
 
-## Vercel 部署
+## 国内推荐部署：腾讯 EdgeOne Pages
+
+Vercel 如果遇到手机号或网络验证问题，可以使用腾讯 EdgeOne Pages。项目保留 Next.js SSR 能力，不需要改成纯静态站。
+
+### 方式一：从 GitHub 导入
+
+1. 先把代码推送到 GitHub。
+2. 登录腾讯云 EdgeOne Pages 控制台。
+3. 新建 Pages 项目，选择从 Git 仓库导入。
+4. 选择本项目仓库 `factory-finance-dashboard`。
+5. 框架选择 Next.js。
+6. 构建命令填写：
+
+```bash
+npm run build
+```
+
+7. 输出目录保持平台默认的 Next.js 配置。
+8. Node 版本选择 `20.19+` 或 `22.x`。
+9. 在环境变量中配置：
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `NEXT_PUBLIC_APP_URL`，部署后可填线上域名
+   - `SUPABASE_SERVICE_ROLE_KEY`
+10. 点击部署。
+
+### 方式二：从 Gitee 导入
+
+如果 GitHub 在国内访问不稳定，可以把同一份代码同步到 Gitee，再在 EdgeOne Pages 中选择 Gitee 仓库导入。构建命令和环境变量保持一致。
+
+## Vercel 部署，可选
 
 1. 将项目推送到 GitHub、GitLab 或 Bitbucket。
 2. 登录 Vercel，选择 New Project。
